@@ -1,0 +1,168 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-end mb-4">
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalInscribirComponente">
+            <i class="fa-solid fa-plus"></i> Inscribir Componente
+        </button>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>
+                        <center>
+                            <h3>Listado y registro de Materias Inscritas</h3>
+                        </center>
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <table id="myTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>ID Materia</th>
+                                <th>Nombre Alumno</th>
+                                <th>ID Materia</th>
+                                <th>Nombre Materia</th>
+                                
+
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?= $this->tabla; ?>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+                <div class="card-footer text-body-secondary">
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalInscribirComponente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario Agregar Materia <i
+                        class="fa-solid fa-graduation-cap"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data" id="formInscribirMateria">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="nombreMateria"  class="form-label">ID Alumno</label>
+                           <input id="idAlum" name="idAlum" class="form-control" value='<?= $this->id ?>' type="text">  
+                        </div>
+
+
+                        <div class="col-6">
+                            <label for="nombreMateria" class="form-label">Nombre Materia</label>
+                            <select class="form-select" name="idMateria" id="idMateria">
+                                <?= $this->materia ?>
+                            </select>
+                            
+                        </div>
+                    
+
+                       
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i>
+                    Cerrar</button>
+                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-plus"></i> Guardar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal Editar Alumno -->
+
+<div class="modal fade" id="modalEditarMateria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario Agregar Materia <i
+                        class="fa-solid fa-graduation-cap"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data" id="formEditarMateria">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="idM" class="form-label">ID Materia</label>
+                            <input type="number" class="form-control" id="idM" name="idM" >
+                        </div>
+
+
+                        <div class="col-12">
+                            <label for="nombreMateriaUp" class="form-label">Nombre Materia</label>
+                            <input type="text" class="form-control" id="nombreMateriaUp" name="nombreMateriaUp">
+                        </div>
+                        <div class="col-6">
+                            <label for="cicloUp" class="form-label">Ciclo</label>
+                            <input type="number" class="form-control" id="cicloUp" name="cicloUp">
+
+                        </div>
+
+                        <div class="col-6">
+                            <label for="creditosUp" class="form-label">Creditos</label>
+                            <input type="number" class="form-control" id="creditosUp" name="creditosUp">
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i>
+                    Cerrar</button>
+                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-plus"></i> Guardar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,138 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-end mb-4">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarAsignacionComponente">
+            <i class="fa-solid fa-plus"></i> Agregar Asignación Componente
+        </button>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>
+                        <center>
+                            <h3>Listado y registro de Asignación de Componentes</h3>
+                        </center>
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <table id="myTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>ID Asignación</th>
+                                <th>Docente</th>
+                                <th>Materia</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?= $this->tabla; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-body-secondary">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Agregar Asignación Componente -->
+<div class="modal fade" id="modalAgregarAsignacionComponente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalAgregarAsignacionComponenteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAgregarAsignacionComponenteLabel">Formulario Agregar Asignación Componente <i
+                        class="fa-solid fa-book-open-reader"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="formAgregarAsignacionComponente">
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label for="docenteIdDocente" class="form-label">Docente</label>
+                            <select class="form-select" name="docenteIdDocente" id="docenteIdDocente" required>
+                                <option value="">Seleccione un docente</option>
+                                <?php if (isset($this->docentes)): ?>
+                                    <?php foreach ($this->docentes as $d): ?>
+                                        <option value="<?= $d['idDocente']; ?>"><?= $d['nombreDocente']; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="materiaAsignacion" class="form-label">Materia</label>
+                            <select class="form-select" name="materiaAsignacion" id="materiaAsignacion" required>
+                                <option value="">Seleccione una materia</option>
+                                <?php if (isset($this->materias)): ?>
+                                    <?php foreach ($this->materias as $m): ?>
+                                        <option value="<?= $m['id']; ?>"><?= $m['nombreMateria']; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i>
+                    Cerrar</button>
+                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-plus"></i> Guardar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Asignación Componente -->
+<div class="modal fade" id="modalEditarAsignacionComponente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalEditarAsignacionComponenteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalEditarAsignacionComponenteLabel">Formulario Editar Asignación Componente <i
+                        class="fa-solid fa-book-open-reader"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="formEditarAsignacionComponente">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label for="idAsignacionUp" class="form-label">ID Asignación</label>
+                            <input type="text" class="form-control" id="idAsignacionUp" name="idAsignacionUp" readonly>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="docenteIdDocenteUp" class="form-label">Docente</label>
+                            <select class="form-select" name="docenteIdDocenteUp" id="docenteIdDocenteUp" required>
+                                <option value="">Seleccione un docente</option>
+                                <?php if (isset($this->docentes)): ?>
+                                    <?php foreach ($this->docentes as $d): ?>
+                                        <option value="<?= $d['idDocente']; ?>"><?= $d['nombreDocente']; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="materiaAsignacionUp" class="form-label">Materia</label>
+                            <select class="form-select" name="materiaAsignacionUp" id="materiaAsignacionUp" required>
+                                <option value="">Seleccione una materia</option>
+                                <?php if (isset($this->materias)): ?>
+                                    <?php foreach ($this->materias as $m): ?>
+                                        <option value="<?= $m['id']; ?>"><?= $m['nombreMateria']; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i>
+                    Cerrar</button>
+                <button type="submit" class="btn btn-warning"> <i class="fa-solid fa-arrow-rotate-right"></i> Actualizar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

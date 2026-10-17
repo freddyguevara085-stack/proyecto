@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <!-- Encabezado de la página -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fa-solid fa-graduation-cap text-primary"></i> Mis Calificaciones
+        </h1>
+        <?php if (!empty($this->alumno)): ?>
+            <span class="badge bg-light text-dark border p-2">
+                <i class="fa-solid fa-id-badge text-primary me-1"></i> Carnet: 
+                <strong><?= htmlspecialchars($this->alumno['carnet']); ?></strong>
+            </span>
+        <?php endif; ?>
+    </div>
+
+    <?php if (empty($this->alumno)): ?>
+        <div class="alert alert-warning d-flex align-items-center mb-4" role="alert">
+            <i class="fa-solid fa-triangle-exclamation me-2"></i>
+            <div>No se encontró un perfil de alumno asociado a tu usuario actual.</div>
+        </div>
+    <?php endif; ?>
+
+    <!-- Ficha informativa del alumno -->
+    <?php if (!empty($this->alumno)): ?>
+        <div class="card shadow-sm mb-4 border-left-primary">
+            <div class="card-body py-3">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <span class="text-muted small d-block">Estudiante</span>
+                        <h5 class="mb-0 text-dark fw-bold">
+                            <?= htmlspecialchars(trim($this->alumno['primerNombre'] . ' ' . $this->alumno['segundoNombre'] . ' ' . $this->alumno['primerApellido'] . ' ' . $this->alumno['segundoApellido'])); ?>
+                        </h5>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="text-muted small d-block">Usuario</span>
+                        <span class="fw-semibold text-secondary">
+                            <i class="fa-solid fa-user me-1"></i><?= htmlspecialchars($this->alumno['nombreusuarioestudiante']); ?>
+                        </span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="text-muted small d-block">Correo</span>
+                        <span class="fw-semibold text-secondary">
+                            <i class="fa-solid fa-envelope me-1"></i><?= !empty($this->alumno['correo']) ? htmlspecialchars($this->alumno['correo']) : 'No registrado'; ?>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <!-- Tabla de Calificaciones -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">
+                <i class="fa-solid fa-clipboard-list me-1"></i> Registro de Notas por Materia
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="myTable" class="table table-bordered table-striped table-hover display" width="100%">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="text-center" style="width: 5%;">#</th>
+                            <th style="width: 30%;">Materia</th>
+                            <th style="width: 25%;">Docente</th>
+                            <th class="text-center" style="width: 8%;">I Parcial</th>
+                            <th class="text-center" style="width: 8%;">II Parcial</th>
+                            <th class="text-center" style="width: 8%;">III Parcial</th>
+                            <th class="text-center" style="width: 8%;">Nota Final</th>
+                            <th class="text-center" style="width: 8%;">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?= $this->tabla; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer text-muted small">
+            <i class="fa-solid fa-info-circle me-1"></i> Las materias en estado <em>En Curso</em> o <em>Pendiente</em> corresponden a calificaciones aún no registradas por el docente correspondiente.
+        </div>
+    </div>
+</div>

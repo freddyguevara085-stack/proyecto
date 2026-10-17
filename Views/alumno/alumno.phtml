@@ -1,0 +1,307 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-end mb-4">
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarAlumno">
+            <i class="fa-solid fa-plus"></i> Agregar Alumno
+        </button>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>
+                        <center>
+                            <h3>Listado y registro de Alumnos</h3>
+                        </center>
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <table id="myTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>Carnet</th>
+                                <th>Primer Nombre</th>
+                                <th>Segundo Nombre</th>
+                                <th>Primer Apellido</th>
+                                <th>Segundo Apellido</th>
+                                <th>Sexo</th>
+                                <th>Edad</th>
+                                <th>Fecha Nacimiento</th>
+                                <th>Correo</th>
+                                <th>Telefono</th>
+                                <th>Direccion</th>
+                                <th>Usuario</th>
+                                <th>Imagen</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?= $this->tabla; ?>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+                <div class="card-footer text-body-secondary">
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalAgregarAlumno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario Agregar Alumno <i
+                        class="fa-solid fa-graduation-cap"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data" id="formAgregarAlumno">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="primerNombreA" class="form-label">Primer Nombre</label>
+                            <input type="text" class="form-control" id="primerNombreA" name="primerNombreA">
+                        </div>
+                        <div class="col-6">
+                            <label for="segundoNombreA" class="form-label">Segundo Nombre</label>
+                            <input type="text" class="form-control" id="segundoNombreA" name="segundoNombreA">
+
+                        </div>
+
+                        <div class="col-6">
+                            <label for="primerApellidoA" class="form-label">Primer Apellido</label>
+                            <input type="text" class="form-control" id="primerApellidoA" name="primerApellidoA">
+
+                        </div>
+
+                        <div class="col-6">
+                            <label for="segundoApellidoA" class="form-label">Segundo Apellido</label>
+                            <input type="text" class="form-control" id="segundoApellidoA" name="segundoApellidoA">
+
+                        </div>
+
+                        <div class="col-4">
+                            <label for="sexoA" class="form-label">Sexo</label>
+                            <select class="form-select" name="sexoA" id="sexoA">
+                                <option value="">Seleccione una opcion</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                            </select>
+
+                        </div>
+
+                        <div class="col-4">
+                            <label for="edadA" class="form-label">Edad</label>
+                            <input type="number" class="form-control" id="edadA" name="edadA" min="0" max="150" step="1" required>
+
+                        </div>
+
+                        <div class="col-4">
+                            <label for="nacimientoA" class="form-label">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="nacimientoA" name="nacimientoA">
+
+                        </div>
+
+                        <div class="col-8">
+                            <label for="correoA" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="correoA" name="correoA">
+
+                        </div>
+
+                        <div class="col-4">
+                            <label for="telefonoA" class="form-label">Telefono</label>
+                            <input type="tel" class="form-control" id="telefonoA" name="telefonoA">
+
+                        </div>
+
+                        <div class="col-12">
+                            <label for="direccionA" class="form-label">Direccion</label>
+
+                            <textarea class="form-control" rows="2" name="direccionA" id="direccionA"></textarea>
+                        </div>
+
+                        <div class="col-4">
+                            <label for="nombreUsuarioEstudiante" class="form-label">Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="nombreUsuarioEstudiante" name="nombreUsuarioEstudiante" required>
+                        </div>
+
+                        <div class="col-4">
+                            <label for="claveUsuarioEstudiante" class="form-label">Contraseña Usuario</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control password-toggle-input" id="claveUsuarioEstudiante" name="claveUsuarioEstudiante" required>
+                                <button type="button" class="btn btn-outline-secondary btnTogglePassword" data-target="#claveUsuarioEstudiante">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <label for="repetirClaveUsuarioEstudiante" class="form-label">Repita Contraseña</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control password-toggle-input" id="repetirClaveUsuarioEstudiante" name="repetirClaveUsuarioEstudiante" required>
+                                <button type="button" class="btn btn-outline-secondary btnTogglePassword" data-target="#repetirClaveUsuarioEstudiante">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="imagenA" class="form-label">Imagen</label>
+                            <input type="file" class="form-control" accept="image/*" id="imagenA" name="imagenA">
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i>
+                    Cerrar</button>
+                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-plus"></i> Guardar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal Editar Alumno -->
+<div class="modal fade" id="modalEditarAlumno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario Editar Alumno <i
+                        class="fa-solid fa-graduation-cap"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data" id="formEditarAlumno">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <label for="primerNombreAUp" class="form-label">Carnet Del Estudiante</label>
+                            <input type="text" class="form-control" id="carnetA" name="carnetA" readonly>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="primerNombreAUp" class="form-label">Primer Nombre</label>
+                            <input type="text" class="form-control" id="primerNombreAUp" name="primerNombreAUp">
+                        </div>
+                        <div class="col-6">
+                            <label for="segundoNombreAUp" class="form-label">Segundo Nombre</label>
+                            <input type="text" class="form-control" id="segundoNombreAUp" name="segundoNombreAUp">
+
+                        </div>
+
+                        <div class="col-6">
+                            <label for="primerApellidoAUp" class="form-label">Primer Apellido</label>
+                            <input type="text" class="form-control" id="primerApellidoAUp" name="primerApellidoAUp">
+
+                        </div>
+
+                        <div class="col-6">
+                            <label for="segundoApellidoAUp" class="form-label">Segundo Apellido</label>
+                            <input type="text" class="form-control" id="segundoApellidoAUp" name="segundoApellidoAUp">
+
+                        </div>
+
+                        <div class="col-4">
+                            <label for="sexoAUp" class="form-label">Sexo</label>
+                            <select class="form-select" name="sexoAUp" id="sexoAUp">
+                                <option value="">Seleccione una opcion</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                            </select>
+
+                        </div>
+
+                        <div class="col-4">
+                            <label for="edadAUp" class="form-label">Edad</label>
+                            <input type="number" class="form-control" id="edadAUp" name="edadAUp" min="0" max="150" step="1" required>
+
+                        </div>
+
+                        <div class="col-4">
+                            <label for="nacimientoAUp" class="form-label">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="nacimientoAUp" name="nacimientoAUp">
+
+                        </div>
+
+                        <div class="col-8">
+                            <label for="correoAUp" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="correoAUp" name="correoAUp">
+
+                        </div>
+
+                        <div class="col-4">
+                            <label for="telefonoAUp" class="form-label">Telefono</label>
+                            <input type="tel" class="form-control" id="telefonoAUp" name="telefonoAUp">
+
+                        </div>
+
+                        <div class="col-12">
+                            <label for="direccionAUp" class="form-label">Direccion</label>
+
+                            <textarea class="form-control" rows="2" name="direccionAUp" id="direccionAUp"></textarea>
+                        </div>
+
+                        <div class="col-12 text-center" >
+                            <label class="form-label d-block">Previsualizacion Imagen</label>
+                            <img id="imagenPrw" class="img-thumbnail" style="max-width: 40%" src="" alt="">
+                        </div>
+
+
+
+                        <div class="col-12">
+                            <label for="imagenAUp" class="form-label">Imagen</label>
+                            <input type="file" class="form-control" accept="image/*" id="imagenAUp" name="imagenAUp">
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i>
+                    Cerrar</button>
+                <button type="submit" class="btn btn-warning"> <i class="fa-solid fa-arrow-rotate-right"></i> Actualizar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

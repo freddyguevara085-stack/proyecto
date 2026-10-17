@@ -1,0 +1,138 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-end mb-4">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarMatricula">
+            <i class="fa-solid fa-plus"></i> Agregar Matrícula
+        </button>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>
+                        <center>
+                            <h3>Listado y registro de Matrículas</h3>
+                        </center>
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <table id="myTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>ID Matrícula</th>
+                                <th>Grupo</th>
+                                <th>Alumno</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?= $this->tabla; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-body-secondary">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Agregar Matrícula -->
+<div class="modal fade" id="modalAgregarMatricula" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalAgregarMatriculaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAgregarMatriculaLabel">Formulario Agregar Matrícula <i
+                        class="fa-solid fa-id-card"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="formAgregarMatricula">
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label for="grupoIdGrupo" class="form-label">Grupo</label>
+                            <select class="form-select" name="grupoIdGrupo" id="grupoIdGrupo" required>
+                                <option value="">Seleccione un grupo</option>
+                                <?php if (isset($this->grupos)): ?>
+                                    <?php foreach ($this->grupos as $g): ?>
+                                        <option value="<?= $g['idGrupo']; ?>"><?= $g['nombreGrupo']; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="alumnoIdAlumno" class="form-label">Alumno</label>
+                            <select class="form-select" name="alumnoIdAlumno" id="alumnoIdAlumno" required>
+                                <option value="">Seleccione un alumno</option>
+                                <?php if (isset($this->alumnos)): ?>
+                                    <?php foreach ($this->alumnos as $a): ?>
+                                        <option value="<?= $a['carnet']; ?>"><?= $a['carnet'] . ' - ' . $a['primerNombre'] . ' ' . $a['primerApellido']; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i>
+                    Cerrar</button>
+                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-plus"></i> Guardar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Matrícula -->
+<div class="modal fade" id="modalEditarMatricula" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalEditarMatriculaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalEditarMatriculaLabel">Formulario Editar Matrícula <i
+                        class="fa-solid fa-id-card"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="formEditarMatricula">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label for="idMatriculaUp" class="form-label">ID Matrícula</label>
+                            <input type="text" class="form-control" id="idMatriculaUp" name="idMatriculaUp" readonly>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="grupoIdGrupoUp" class="form-label">Grupo</label>
+                            <select class="form-select" name="grupoIdGrupoUp" id="grupoIdGrupoUp" required>
+                                <option value="">Seleccione un grupo</option>
+                                <?php if (isset($this->grupos)): ?>
+                                    <?php foreach ($this->grupos as $g): ?>
+                                        <option value="<?= $g['idGrupo']; ?>"><?= $g['nombreGrupo']; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="alumnoIdAlumnoUp" class="form-label">Alumno</label>
+                            <select class="form-select" name="alumnoIdAlumnoUp" id="alumnoIdAlumnoUp" required>
+                                <option value="">Seleccione un alumno</option>
+                                <?php if (isset($this->alumnos)): ?>
+                                    <?php foreach ($this->alumnos as $a): ?>
+                                        <option value="<?= $a['carnet']; ?>"><?= $a['carnet'] . ' - ' . $a['primerNombre'] . ' ' . $a['primerApellido']; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i>
+                    Cerrar</button>
+                <button type="submit" class="btn btn-warning"> <i class="fa-solid fa-arrow-rotate-right"></i> Actualizar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

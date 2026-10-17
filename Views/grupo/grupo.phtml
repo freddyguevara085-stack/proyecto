@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-end mb-4">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarGrupo">
+            <i class="fa-solid fa-plus"></i> Agregar Grupo
+        </button>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>
+                        <center>
+                            <h3>Listado y registro de Grupos</h3>
+                        </center>
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <table id="myTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>ID Grupo</th>
+                                <th>Nombre del Grupo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?= $this->tabla; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-body-secondary">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Agregar Grupo -->
+<div class="modal fade" id="modalAgregarGrupo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalAgregarGrupoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAgregarGrupoLabel">Formulario Agregar Grupo <i
+                        class="fa-solid fa-users"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="formAgregarGrupo">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="nombreGrupo" class="form-label">Nombre del Grupo</label>
+                            <input type="text" class="form-control" id="nombreGrupo" name="nombreGrupo" required>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i>
+                    Cerrar</button>
+                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-plus"></i> Guardar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Grupo -->
+<div class="modal fade" id="modalEditarGrupo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalEditarGrupoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalEditarGrupoLabel">Formulario Editar Grupo <i
+                        class="fa-solid fa-users"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="formEditarGrupo">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label for="idGrupoUp" class="form-label">ID Grupo</label>
+                            <input type="text" class="form-control" id="idGrupoUp" name="idGrupoUp" readonly>
+                        </div>
+                        <div class="col-12">
+                            <label for="nombreGrupoUp" class="form-label">Nombre del Grupo</label>
+                            <input type="text" class="form-control" id="nombreGrupoUp" name="nombreGrupoUp" required>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i>
+                    Cerrar</button>
+                <button type="submit" class="btn btn-warning"> <i class="fa-solid fa-arrow-rotate-right"></i> Actualizar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

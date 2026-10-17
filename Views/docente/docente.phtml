@@ -1,0 +1,132 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-end mb-4">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarDocente">
+            <i class="fa-solid fa-plus"></i> Agregar Docente
+        </button>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>
+                        <center>
+                            <h3>Listado y registro de Docentes</h3>
+                        </center>
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <table id="myTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>ID Docente</th>
+                                <th>Nombre Docente</th>
+                                <th>Especialidad</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?= $this->tabla; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-body-secondary">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Agregar Docente -->
+<div class="modal fade" id="modalAgregarDocente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalAgregarDocenteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalAgregarDocenteLabel">Formulario Agregar Docente <i
+                        class="fa-solid fa-chalkboard-user"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="formAgregarDocente">
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label for="nombreDocente" class="form-label">Nombre Docente</label>
+                            <input type="text" class="form-control" id="nombreDocente" name="nombreDocente" required>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="especialidad" class="form-label">Especialidad</label>
+                            <input type="text" class="form-control" id="especialidad" name="especialidad" required>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="nombreUsuarioDocente" class="form-label">Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="nombreUsuarioDocente" name="nombreUsuarioDocente" required>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="claveUsuarioDocente" class="form-label">Contraseña Usuario</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control password-toggle-input" id="claveUsuarioDocente" name="claveUsuarioDocente" required>
+                                <button type="button" class="btn btn-outline-secondary btnTogglePassword" data-target="#claveUsuarioDocente">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="repetirClaveUsuarioDocente" class="form-label">Repita Contraseña</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control password-toggle-input" id="repetirClaveUsuarioDocente" name="repetirClaveUsuarioDocente" required>
+                                <button type="button" class="btn btn-outline-secondary btnTogglePassword" data-target="#repetirClaveUsuarioDocente">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i>
+                    Cerrar</button>
+                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-plus"></i> Guardar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Docente -->
+<div class="modal fade" id="modalEditarDocente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalEditarDocenteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalEditarDocenteLabel">Formulario Editar Docente <i
+                        class="fa-solid fa-chalkboard-user"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="formEditarDocente">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label for="idDocenteUp" class="form-label">ID Docente</label>
+                            <input type="text" class="form-control" id="idDocenteUp" name="idDocenteUp" readonly>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="nombreDocenteUp" class="form-label">Nombre Docente</label>
+                            <input type="text" class="form-control" id="nombreDocenteUp" name="nombreDocenteUp" required>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="especialidadUp" class="form-label">Especialidad</label>
+                            <input type="text" class="form-control" id="especialidadUp" name="especialidadUp" required>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-x"></i>
+                    Cerrar</button>
+                <button type="submit" class="btn btn-warning"> <i class="fa-solid fa-arrow-rotate-right"></i> Actualizar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
